@@ -3,7 +3,7 @@ Handles user authentication for users and admins, and session management for the
 '''
 
 import uuid #used to generate unique session IDs
-from shopping_app.data import data # Importing the in-memory database
+from shopping_app import data # Importing the in-memory database
 
 # Function to authenticate user credentials
 def authenticate_user(username, password, role):
