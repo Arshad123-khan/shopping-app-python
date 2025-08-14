@@ -19,7 +19,7 @@ def view_products():
 
 
 # Functions for Admins to manage products and categories
-def add_product(session_id, product_id,name, category_id, price, stock):
+def add_product(session_id, product_id,name, category_id, price):
     if not auth.check_role(session_id,'admin'):
         print("Access Denied, only Admin can add products")
         return
@@ -32,14 +32,13 @@ def add_product(session_id, product_id,name, category_id, price, stock):
     data.products_db[product_id] = {
         "name": name,
         'price': price,
-        'stock': stock,
         'category_id': category_id
     }
     print(f"Product '{name}' added successfully.")       
 
 
 # Function to update products and categories
-def update_product(session_id, product_id, name=None, category_id= None, price=None, stock= None ):
+def update_product(session_id, product_id, name=None, category_id= None, price=None):
     if not auth.check_role(session_id,'admin'):
         print("Access Denied, only Admin can update products")
         return
@@ -53,8 +52,10 @@ def update_product(session_id, product_id, name=None, category_id= None, price=N
         data.products_db[product_id]["category_id"] = category_id
     if price:
         data.products_db[product_id]["price"] = price   
+    '''
     if stock:
         data.products_db[product_id]["stock"] = stock  
+    '''
 
     print(f"Product '{product_id}' updated succesfully")
 
